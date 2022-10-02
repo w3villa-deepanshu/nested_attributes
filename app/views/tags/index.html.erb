@@ -1,0 +1,20 @@
+<table>
+  <thead>
+    <tr>
+      <td>sr no</td>
+      <td>name</td>
+      <td>action</td>
+    </tr>
+  </thead>
+  <tbody>
+    <% @tags.each_with_index do |tag,index| %>
+      <tr>
+        <td><%= index+1 %></td>
+        <td><%= tag.name %></td>
+        <td><%= link_to 'show',tag_path(tag) %>
+          <%= link_to 'edit' ,edit_tag_path(tag.id) %>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>

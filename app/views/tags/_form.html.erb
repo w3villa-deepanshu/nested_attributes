@@ -1,0 +1,12 @@
+<%= form_for @tag do |form| %>
+
+  <div class="field form-group">
+    <%= form.label :name %>
+    <%= form.text_field :name, class:'form-control' %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit class:"btn btn-outline-success" %>
+  </div>
+
+<% end %>

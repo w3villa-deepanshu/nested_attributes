@@ -1,0 +1,4 @@
+<h1>Title<h1><%= @blog.title%>
+<p>Description</p><%= @blog.description%>
+<p>category</p><%= @blog.category.name%>
+<%=link_to 'edit' ,edit_blog_path(@blog.id)%>

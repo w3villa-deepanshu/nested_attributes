@@ -1,0 +1,52 @@
+<%= form_for @blog do |form| %>
+
+  <div class="field form-group">
+    <%= form.label :title %>
+    <%= form.text_field :title, class:'form-control' %>
+  </div>
+
+  <div class="field form-group">
+    <%= form.label :description %>
+    <%= form.text_area :description, class:'form-control' %>
+  </div>
+
+  <div class="field form-group">
+    <%= form.label :category %>
+    <%= form.select :category_id,Category.all.map {|c| [c.name , c.id]} %>
+  </div>
+
+  <% @blog.tags.each_with_index do |tag,i| %>
+    <div>
+      <input
+        type="hidden"
+        value="<%= tag.id%>"
+        name="blog[tags_attributes][<%= i%>][id]"
+      >
+
+      <label>Tag:[<%= i+1 %>]<input
+          type="checkbox"
+          value="true"
+          name="blog[tags_attributes][<%=i%>][name]"
+        ></label>
+
+      <input
+        type="hidden"
+        value="false"
+        name="blog[tags_attributes][<%= i%>][_destroy]"
+      >
+
+      <input
+        type="checkbox"
+        value="true"
+        name="blog[tags_attributes][<%= i%>][_destroy]"
+      >
+
+    </div>
+  <% end %>
+  <label>Tag:<input type="text" name="blog[tags_attributes][<%= @blog.tags.count%>][name]"></label>
+
+  <div class="actions">
+    <%= form.submit class:"btn btn-outline-success" %>
+  </div>
+
+<% end %>
